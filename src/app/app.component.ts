@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
         this.gender = patient.gender || '';
       });
       smart.patient.api.search({ type: 'MedicationOrder' }).then(results => {
-        if (results.data.entry) {
+        if (results.data && results.data.entry) {
           results.data.entry.forEach(element => {
             this.medicationdetails.push({
               dosageInstruction:
