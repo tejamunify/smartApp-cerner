@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SmartApp</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- <script src="https://cdn.rawgit.com/smart-on-fhir/client-js/v0.1.8/dist/fhir-client.js"></script> -->
+    <script src="https://tejamunify.github.io/smartApp-cerner//assets/js/fhir-client.js"></script>
+    <script>
+      FHIR.oauth2.authorize({
+        client_id: 'd22f851f-c8a0-45c2-be23-5eec7ef4d6cc',
+        scope:
+          'patient/Patient.read patient/Observation.read patient/MedicationOrder.read launch online_access openid profile',
+      });
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
