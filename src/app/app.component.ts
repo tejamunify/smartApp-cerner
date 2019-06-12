@@ -21,18 +21,20 @@ export class AppComponent implements OnInit {
         this.gender = patient.gender || '';
       });
       smart.patient.api.search({ type: 'MedicationOrder' }).then(results => {
-        results.data.entry.forEach(element => {
-          this.medicationdetails.push({
-            dosageInstruction:
-              element.resource && element.resource.dosageInstruction
-                ? element.resource.dosageInstruction[0].text || ''
-                : '',
-            name:
-              element.resource && element.resource.medicationCodeableConcept
-                ? element.resource.medicationCodeableConcept.text || ''
-                : '',
+        if (results.data.entry) {
+          results.data.entry.forEach(element => {
+            this.medicationdetails.push({
+              dosageInstruction:
+                element.resource && element.resource.dosageInstruction
+                  ? element.resource.dosageInstruction[0].text || ''
+                  : '',
+              name:
+                element.resource && element.resource.medicationCodeableConcept
+                  ? element.resource.medicationCodeableConcept.text || ''
+                  : '',
+            });
           });
-        });
+        }
       });
     });
   }
