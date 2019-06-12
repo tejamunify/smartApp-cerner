@@ -13,11 +13,6 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // window['FHIR'].oauth2.authorize({
-    //   client_id: 'my_web_app',
-    //   scope: 'patient/*.read',
-    // });
-
     window['FHIR'].oauth2.ready(smart => {
       smart.patient.read().then(patient => {
         this.name =
@@ -28,8 +23,14 @@ export class AppComponent implements OnInit {
       smart.patient.api.search({ type: 'MedicationOrder' }).then(results => {
         results.data.entry.forEach(element => {
           this.medicationdetails.push({
-            dosageInstruction: element.resource.dosageInstruction[0].text,
-            name: element.resource.medicationCodeableConcept.text,
+            dosageInstruction:
+              element.resource && element.resource.dosageInstruction
+                ? element.resource.dosageInstruction[0].text || ''
+                : '',
+            name:
+              element.resource && element.resource.medicationCodeableConcept
+                ? element.resource.medicationCodeableConcept.text || ''
+                : '',
           });
         });
       });
