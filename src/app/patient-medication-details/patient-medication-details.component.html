@@ -1,0 +1,34 @@
+<div *ngIf="!showLoader" class="medication_table">
+  <mat-card>
+    <mat-card-title>
+      Patient Medication Orders
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="medicationdetails.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine</th>
+              <th>Dosage Instruction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of medicationdetails">
+              <td>
+                {{ detail.name || '' }}
+              </td>
+              <td>
+                {{ detail.dosageInstruction || '' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="medicationdetails.length === 0" class="noDataText">No Data Found</div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="showLoader" class="loader_div flex_display">
+  <img class="margin_auto" src="/assets/img/loader.gif" alt="loader" />
+</div>

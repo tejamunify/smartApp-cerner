@@ -1,0 +1,16 @@
+.header {
+  height: 60px;
+  background-color: #004c76;
+}
+
+.demographic_Details_name {
+  padding: 8px 0px 0px 8px;
+  font-size: 20px;
+  color: white;
+}
+
+.demographic_Details_meta {
+  padding-left: 8px;
+  color: white;
+  padding-top: 2px;
+}
